@@ -1,0 +1,8 @@
+<h1>Here is your most important task</h1>
+
+<h2>Name: <%= @task.name %></h2>
+<p>Content: <%= @task.content %></p>
+<p>Completed? <%= @task.completed %></p>
+<p>Rating: <%= "*" * @task.rating %></p>
+
+<h2><%= link_to "Index", tasks_path %></h2>
