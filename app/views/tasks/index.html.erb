@@ -1,9 +1,10 @@
 <h1>Here are all your <%= @tasks_total %> tasks</h1>
+<p><%= link_to "Add a new Task", new_task_path, class:"btn-new"%></p>
 
 <% @tasks.each_with_index do |task, index| %>
   <h2><%= index + 1 %> <%= link_to task.name, task_path(task) %></h2>
   <p>Content: <%= task.content %></p>
   <p>Completed? <%= task.completed %></p>
   <p>Rating: <%= "*" * task.rating %></p>
-  <p><%= link_to "Delete", task_path(task), method: :delete%></p>
+  <p><%= link_to "Delete", task_path(task), method: :delete %></p>
 <% end %>
