@@ -1,10 +1,31 @@
-<h1>Here are all your <%= @tasks_total %> tasks</h1>
-<p><%= link_to "Add a new Task", new_task_path, class:"btn-new"%></p>
+<div class="text-center">
+  <h1>Here are all your <%= @tasks_total %> tasks</h1>
+  <p><%= link_to "Add a new Task", new_task_path, class:"btn-new"%></p>
+</div>
 
-<% @tasks.each_with_index do |task, index| %>
-  <h2><%= index + 1 %> <%= link_to task.name, task_path(task) %></h2>
-  <p>Content: <%= task.content %></p>
-  <p>Completed? <%= task.completed %></p>
-  <p>Rating: <%= "*" * task.rating %></p>
-  <p><%= link_to "Delete", task_path(task), method: :delete %></p>
-<% end %>
+<div class="table-white">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+         <th>Number</th>
+         <th>Name</th>
+         <th>Completed</th>
+         <th>Rating</th>
+         <th>Edit</th>
+         <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each_with_index do |task, index| %>
+        <tr>
+          <td><p><%= index + 1 %></p></td>
+          <td><p><%= link_to task.name, task_path(task) %></p></td>
+          <td><p><%= task.completed %></p></td>
+          <td><p><%= "*" * task.rating %></p></td>
+          <td><small><%= link_to "Update", edit_task_path(task) %></small></td>
+          <td><small><%= link_to "Delete", task_path(task), method: :delete %></small></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
